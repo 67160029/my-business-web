@@ -14,23 +14,37 @@
 
 ---
 
-## 📁 โครงสร้างไฟล์  
+# โครงสร้างไฟล์
 
-- `index.html` : หน้าแรก (Home)  
-- `about.html` : หน้าเกี่ยวกับเรา (About)  
-- `services.html` : หน้าบริการ (Services)  
-- `contact.html` : หน้าติดต่อเรา (Contact)  
+```
+my-business-web/
+├── index.html
+├── about.html
+├── services.html
+├── contact_us.html
+├── css/
+│   └── styles.css
+├── images/
+│   └── ...
+└── README.md
+```  
 
-- `images/` : โฟลเดอร์เก็บรูปภาพ  
-  - Logo.png  
-  - member1.jpg  
-  - member2.jpg  
-  - member3.jpg  
-  - index.png  
-  - about1.png  
-  - about2.png  
-  - services.png  
-  - contact.png  
+## CSS Checklist
+
+ความเรียบร้อย checklist แต่ละข้อ
+
+- [x] Universal Selector & Reset
+- [x] Element Selectors (h1-h4, p, a, etc.)
+- [x] Class Selectors (.hero, .card, .btn, etc.)
+- [x] ID Selectors (#header, #footer)
+- [x] Pseudo-classes (:hover, :active, :first-child)
+- [x] CSS Units (px, rem, %, vw, vh)
+- [x] Color Palette & Typography
+- [x] Box Model (padding, margin, border)
+- [x] Positioning (sticky, absolute, fixed)
+- [x] Display & Layout (flexbox, grid)
+- [x] Hover Effects & Transitions
+- [x] CSS Organization & Comments
 
 - `README.md` : เอกสารประกอบโปรเจกต์
 
@@ -39,23 +53,29 @@
 ## 🔗 ลิงก์เข้าสู่หน้าต่างๆ  
 
 ### 🏠 หน้าแรก (Home)
-[![Home Page](images/index.png)](index.html)
-
+[![Home Page 1](images/index%20style%201.png)](index.html)
+[![Home Page 2](images/index%20style%202.png)](index.html)
 ---
 
 ### 👤 เกี่ยวกับเรา (About)
-[![About Page 1](images/about1.png)](about.html)
-[![About Page 2](images/about2.png)](about.html)
+[![About Page 1](images/about%20style%201.png)](about.html)
+[![About Page 2](images/about%20style%202.png)](about.html)
+[![About Page 3](images/about%20style%203.png)](about.html)
 
 ---
 
 ### 🛠️ บริการของเรา (Services)
-[![Services Page](images/services.png)](services.html)
+[![Services Page 1](images/service%20style%201.png)](services.html)
+[![Services Page 2](images/service%20style%202.png)](services.html)
+[![Services Page 3](images/service%20style%203.png)](services.html)
 
 ---
 
 ### 📞 ติดต่อเรา (Contact)
-[![Contact Page](images/contact.png)](contact.html)
+[![Contact Page 1](images/contact%20style%201.png)](contact.html)
+[![Contact Page 2](images/contact%20style%202.png)](contact.html)
+[![Contact Page 3](images/contact%20style%203.png)](contact.html)
+[![Contact Page 4](images/contact%20style%204.png)](contact.html)
 
 ##  ผู้จัดทำ 
 
