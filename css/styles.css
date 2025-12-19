@@ -1,0 +1,402 @@
+/* ==================================================
+	 Modern modular stylesheet — implements checklist
+	 - Reset & box-sizing
+	 - Variables: color palette & typography
+	 - Element, class, ID selectors
+	 - Layout utilities (flex, grid, container)
+	 - Components: .hero, .card, .btn, .nav
+	 - Positioning examples: sticky, fixed, absolute
+	 - Pseudo-classes, transitions, accessibility
+	 ================================================== */
+
+/* -------------------- Reset & Base -------------------- */
+:root{
+	/* Color palette */
+	--color-bg: #0f1724;
+	--color-surface: #0b1220;
+	--color-muted: #94a3b8;
+	--color-primary: #06b6d4; /* teal */
+	--color-accent: #7c3aed; /* violet */
+	--color-white: #ffffff;
+	--color-danger: #ef4444;
+
+	/* Typography */
+	--ff-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+	--base-size: 16px;
+	--scale-ratio: 1.15;
+	--radius: 0.5rem;
+
+	/* Layout */
+	--container-max: 1200px;
+	--gutter: 1.25rem;
+}
+
+/* Box-sizing and reset */
+*,
+*::before,
+*::after{
+	box-sizing: border-box;
+}
+html,body,div,span,h1,h2,h3,h4,p,a,ul,ol,li,figure,figcaption,blockquote,dl,dt,dd{margin:0;padding:0;border:0}
+html{font-size:var(--base-size);height:100%}
+body{
+	min-height:100%;
+	font-family:var(--ff-sans);
+	color:var(--color-white);
+	background:linear-gradient(180deg,var(--color-bg),#071021);
+	-webkit-font-smoothing:antialiased;
+	-moz-osx-font-smoothing:grayscale;
+	line-height:1.45;
+}
+
+/* Utility: container */
+.container{
+	width:100%;
+	max-width:var(--container-max);
+	margin-inline:auto;
+	padding-inline:var(--gutter);
+}
+
+/* -------------------- Typography -------------------- */
+h1{font-size:clamp(1.75rem,2.8vw,2.5rem);line-height:1.05;margin-bottom:.4rem}
+h2{font-size:clamp(1.5rem,2.2vw,2rem);margin-bottom:.5rem}
+h3{font-size:1.125rem;margin-bottom:.4rem}
+h4{font-size:1rem;margin-bottom:.3rem}
+p{color:var(--color-muted);margin-bottom:1rem}
+a{color:var(--color-primary);text-decoration:none}
+a:focus{outline:3px solid color-mix(in srgb,var(--color-primary) 30%, transparent)}
+
+/* -------------------- Layout helpers -------------------- */
+.row{display:flex;flex-wrap:wrap;gap:1rem}
+.col{flex:1 1 0%}
+.center{display:flex;align-items:center;justify-content:center}
+.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* Grid utility */
+.grid{display:grid;gap:1rem}
+.grid--3{grid-template-columns:repeat(3,1fr)}
+.grid--2{grid-template-columns:repeat(2,1fr)}
+
+/* -------------------- Header / Nav -------------------- */
+#header{
+	background:linear-gradient(90deg, rgba(12,18,30,0.6), rgba(8,12,20,0.6));
+	position:relative;z-index:10;
+}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:0.75rem 0}
+.nav__list{display:flex;gap:1rem;list-style:none}
+.nav__link{color:var(--color-white);padding:0.4rem 0.6rem;border-radius:6px}
+.nav__link:hover{background:rgba(255,255,255,0.03);color:var(--color-primary)}
+
+/* Sticky header example */
+.sticky-header{position:sticky;top:0;backdrop-filter:blur(6px)}
+
+/* -------------------- Hero -------------------- */
+.hero{display:grid;grid-template-columns:1fr;align-items:center;padding:4rem 0}
+.hero__content{max-width:64ch}
+.hero__eyebrow{color:var(--color-accent);font-weight:600;margin-bottom:.5rem}
+.hero__title{color:var(--color-white);margin-bottom:.5rem}
+.hero__lead{color:var(--color-muted);font-size:1.0625rem}
+
+/* Responsive hero layout */
+@media(min-width:800px){
+	.hero{grid-template-columns:1fr 1fr;gap:2rem}
+}
+
+/* -------------------- Card Component -------------------- */
+.card{
+	background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+	border:1px solid rgba(255,255,255,0.04);
+	padding:1.25rem;
+	border-radius:calc(var(--radius));
+	box-shadow:0 6px 18px rgba(2,6,23,0.6);
+}
+.card__title{font-weight:600;color:var(--color-white);margin-bottom:.5rem}
+.card__body{color:var(--color-muted);font-size:0.95rem}
+
+/* Badge absolute positioned example */
+.card--badge{position:relative}
+.card--badge .badge{position:absolute;top:-0.75rem;right:-0.75rem;background:var(--color-accent);color:var(--color-white);padding:0.35rem .6rem;border-radius:999px;font-size:.8rem}
+
+/* -------------------- Buttons -------------------- */
+.btn{
+	display:inline-flex;align-items:center;gap:.5rem;justify-content:center;
+	padding:.6rem 1rem;border-radius:8px;border:0;font-weight:600;cursor:pointer;
+	background:var(--color-primary);color:var(--color-bg);transition:transform .15s ease,box-shadow .15s ease,background .15s ease;
+}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(6,182,212,0.12)}
+.btn:active{transform:translateY(0)}
+.btn--ghost{background:transparent;color:var(--color-white);border:1px solid rgba(255,255,255,0.06)}
+.btn--accent{background:var(--color-accent);color:var(--color-white)}
+
+/* Fixed CTA */
+.fixed-cta{position:fixed;right:1.25rem;bottom:1.25rem;z-index:60}
+
+/* -------------------- Footer -------------------- */
+#footer{padding:2rem 0;color:var(--color-muted);border-top:1px solid rgba(255,255,255,0.03);background:transparent}
+
+/* -------------------- Forms -------------------- */
+label{display:block;margin-bottom:.35rem;color:var(--color-muted);font-size:.95rem}
+input,textarea,select{width:100%;padding:.6rem .75rem;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--color-white)}
+input:focus,textarea:focus,select:focus{outline:none;box-shadow:0 0 0 4px color-mix(in srgb,var(--color-primary) 12%, transparent)}
+
+/* -------------------- Utilities: spacing, text, helpers -------------------- */
+.mb-1{margin-bottom:0.5rem}
+.mb-2{margin-bottom:1rem}
+.mt-1{margin-top:0.5rem}
+.text-muted{color:var(--color-muted)}
+.text-center{text-align:center}
+
+/* -------------------- Pseudo-classes / states -------------------- */
+.card:first-child{border-color:rgba(124,58,237,0.25)}
+.btn[disabled]{opacity:.45;cursor:not-allowed;transform:none}
+a:active{opacity:0.85}
+
+/* -------------------- Accessibility notes -------------------- */
+/* Ensure focusable elements show clear focus */
+:focus{outline-color:var(--color-primary)}
+
+/* -------------------- Example responsive tweaks -------------------- */
+@media(max-width:480px){
+	.hero{padding:2.25rem 0}
+	.nav{gap:.5rem}
+}
+
+/* End of stylesheet */
+
+/* ========================
+   RESET & DEFAULTS
+======================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: "Open Sans", Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+/* ========================
+   TYPOGRAPHY
+======================== */
+h1 {
+  font-size: 4rem;
+  color: #df3939;
+  letter-spacing: 1px;
+}
+
+h2 {
+  font-size: 2rem;
+  color: #d32623;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: 1.4rem;
+  color: #333;
+}
+
+p1 {
+  font-size: 1.5rem;
+  color: #b36661;
+  line-height: 1.7;
+}
+
+p {
+  font-size: 1.5rem;
+  line-height: 1.7;
+}
+
+a {
+  text-decoration: none;
+  color: #000000;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #0f0f0f;
+}
+
+/* ========================
+   LAYOUT & CONTAINERS
+======================== */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.section {
+  margin: 3rem 0;
+}
+
+/* ========================
+   HEADER & NAVIGATION
+======================== */
+#header {
+  background-color: #ffffff;
+  border-bottom: 2px solid #000000;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+.nav-menu {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-menu li:first-child a {
+  font-weight: 700;
+}
+
+.nav-menu a:hover {
+  border-bottom: 2px solid #c62828;
+}
+
+/* ========================
+   HERO SECTION
+======================== */
+.hero {
+  height: 100vh;
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.75),
+      rgba(247, 103, 103, 0.75)
+    ),
+    url("../images/hero-bg.jpg") center/cover no-repeat;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 5vw;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+}
+
+/* ========================
+   BUTTONS
+======================== */
+.btn {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.8rem 1.8rem;
+  background-color: #e53935;
+  color: #fff;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #8e0000;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+  transform: scale(0.95);
+}
+
+/* ========================
+   CARDS & SERVICES
+======================== */
+.services {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.card {
+  flex: 1;
+  min-width: 280px;
+  background-color: #fff;
+  padding: 1.5rem;
+  border: 1px solid #f1c0c0;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(198, 40, 40, 0.25);
+}
+
+/* ========================
+   TEAM GRID (ABOUT PAGE)
+======================== */
+.team {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.team-member {
+  text-align: center;
+}
+
+/* ========================
+   FORM STYLING
+======================== */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 0.7rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #c62828;
+}
+
+/* ========================
+   FIXED ELEMENTS
+======================== */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #c62828;
+  color: #fff;
+  padding: 0.8rem;
+  border-radius: 50%;
+  z-index: 50;
+}
+
+/* ========================
+   FOOTER
+======================== */
+#footer {
+  background-color: #d42a2a;
+  color: #fff;
+  padding: 2rem;
+  text-align: center;
+  margin-top: 3rem;
+}
