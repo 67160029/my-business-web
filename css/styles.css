@@ -66,6 +66,8 @@ p{color:var(--color-muted);margin-bottom:1rem}
 a{color:var(--color-primary);text-decoration:none}
 a:focus{outline:3px solid color-mix(in srgb,var(--color-primary) 30%, transparent)}
 
+img{max-width:100%;height:auto}
+
 /* -------------------- Layout helpers -------------------- */
 .row{display:flex;flex-wrap:wrap;gap:1rem}
 .col{flex:1 1 0%}
@@ -93,7 +95,7 @@ a:focus{outline:3px solid color-mix(in srgb,var(--color-primary) 30%, transparen
 /* -------------------- Hero -------------------- */
 .hero{display:grid;grid-template-columns:1fr;align-items:center;padding:4rem 0}
 .hero__content{max-width:64ch}
-.hero__eyebrow{color:var(--color-accent);font-weight:600;margin-bottom:.5rem}
+.hero__eyebrow{color: #ddd;}
 .hero__title{color:var(--color-white);margin-bottom:.5rem}
 .hero__lead{color:var(--color-muted);font-size:1.0625rem}
 
@@ -111,7 +113,7 @@ a:focus{outline:3px solid color-mix(in srgb,var(--color-primary) 30%, transparen
 	box-shadow:0 6px 18px rgba(2,6,23,0.6);
 }
 .card__title{font-weight:600;color:var(--color-white);margin-bottom:.5rem}
-.card__body{color:var(--color-muted);font-size:0.95rem}
+.card__body{color:var(--color-muted);font-size:1.5em;}
 
 /* Badge absolute positioned example */
 .card--badge{position:relative}
@@ -161,11 +163,14 @@ a:active{opacity:0.85}
 	.nav{gap:.5rem}
 }
 
-/* End of stylesheet */
-
-/* ========================
-   RESET & DEFAULTS
-======================== */
+@media(max-width:768px){
+  .grid--3{grid-template-columns:1fr}
+  .grid--2{grid-template-columns:1fr}
+  .navbar{flex-direction:column; align-items:flex-start; gap:0.5rem}
+  .nav-menu{flex-direction:column; gap:0.5rem; margin-top:0}
+  .navbar img{width:120px}
+}
+/*======================== */
 * {
   margin: 0;
   padding: 0;
@@ -194,7 +199,7 @@ h1 {
 
 h2 {
   font-size: 2rem;
-  color: #d32623;
+  color: #80d0ff;
   margin-bottom: 1rem;
 }
 
@@ -242,7 +247,7 @@ a:hover {
    HEADER & NAVIGATION
 ======================== */
 #header {
-  background-color: #ffffff;
+  background-color: #d61ae7;
   border-bottom: 2px solid #000000;
   position: sticky;
   top: 0;
@@ -276,8 +281,8 @@ a:hover {
 .hero {
   height: 100vh;
   background: linear-gradient(
-      rgba(255, 255, 255, 0.75),
-      rgba(247, 103, 103, 0.75)
+      rgba(242, 139, 255, 0.75),
+      rgba(0, 0, 0, 0.75)
     ),
     url("../images/hero-bg.jpg") center/cover no-repeat;
   color: #fff;
@@ -394,7 +399,7 @@ textarea:focus {
    FOOTER
 ======================== */
 #footer {
-  background-color: #d42a2a;
+  background-color: #74047e;
   color: #fff;
   padding: 2rem;
   text-align: center;
